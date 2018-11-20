@@ -11,7 +11,7 @@ v = HaloUpdate(v);
 % Surface 
 eta=zeros(M,N);
 h = zeros(M,N);
-eta(4+2, 4+2) = 10;
+eta(4+2, 4+2) = 4;
 
 %Update the matrix
 eta=HaloUpdate(eta);
