@@ -1,0 +1,13 @@
+%Creating the gif
+
+h=surf(eta_save(:,:,1)); % ploting the first image;
+shading interp
+
+camlight;
+set(gca,'color','k');
+set(gcf,'color','k');
+
+for t = 1:T
+   set(h,'Zdata',eta_save(:,:,t));
+   gif
+end
