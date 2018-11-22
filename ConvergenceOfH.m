@@ -12,7 +12,7 @@ syms x y t us vs hs;
 
 % Initialize symbolic fields with arbitrary periodic functions
 [us,vs]=SymbolicVelocities(x,y,L,t0);
-hs = cos(2 * pi * x/L) * cos(2 * pi * y / L) * t + D;
+hs = cos(2 * pi * x) * cos(2 * pi * y ) * t + D;
 
 % Obtain the time derivative
 dh_dt = symfun( simplify( diff(hs, t) ), [x y t] );
@@ -80,15 +80,17 @@ num_deltah = HaloUpdate(num_deltah);
 error_dh = abs(num_deltah - sym_dh );
 
 Sum_error_dh = 0;
+% 
+% % Get LS errors
+% for j = 1:N + 4
+%     for  i = 1:M + 4
+%         
+%         Sum_error_dh = Sum_error_dh + error_dh(i,j)^2;
+%         
+%     end
+% end
+% 
+% LS_error_dh = Sum_error_dh/Dim^2;
 
-% Get LS errors
-for j = 1:N + 4
-    for  i = 1:M + 4
-        
-        Sum_error_dh = Sum_error_dh + error_dh(i,j)^2;
-        
-    end
-end
-
-LS_error_dh = Sum_error_dh/Dim^2;
+LS_error_dh = max(error_dh(:));
 end

@@ -11,7 +11,9 @@ v = HaloUpdate(v);
 % Surface 
 eta=zeros(M,N);
 h = zeros(M,N);
-eta(4+2, 4+2) = 4;
+
+%función gausiana para simular una gota
+eta(8+2, 8+2) = 5;
 
 %Update the matrix
 eta=HaloUpdate(eta);

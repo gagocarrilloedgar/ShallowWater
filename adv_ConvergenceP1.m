@@ -80,21 +80,26 @@ num_deltav = HaloUpdate(num_deltav);
 %% Comparison
 error_du = abs(num_deltau - sym_du_P1);
 error_dv = abs(num_deltav - sym_dv_P1);
+%Method 1
 
-Sum_error_du = 0;
-Sum_error_dv = 0;
+% Sum_error_du = 0;
+% Sum_error_dv = 0;
+% 
+% % 
+% for j = 1:N + 4
+%     for  i = 1:M + 4
+%         
+%         Sum_error_du = Sum_error_du + error_du(i,j)^2;
+%         Sum_error_dv = Sum_error_dv + error_dv(i,j)^2;
+%         
+%     end
+% end
+% 
+% LS_error_du = Sum_error_du/Dim^2;
+% LS_error_dv = Sum_error_dv/Dim^2;
 
-% Get LS errors
-for j = 1:N + 4
-    for  i = 1:M + 4
-        
-        Sum_error_du = Sum_error_du + error_du(i,j)^2;
-        Sum_error_dv = Sum_error_dv + error_dv(i,j)^2;
-        
-    end
-end
-
-LS_error_du = Sum_error_du/Dim^2;
-LS_error_dv = Sum_error_dv/Dim^2;
+%Method2 (maximum)
+LS_error_du = max(error_du(:));
+LS_error_dv = max(error_dv(:));
 
 end

@@ -2,30 +2,30 @@
 %P2
 %Creating the plots
 figure;
-loglog(1./Dim, LS_err_dv,'or');
-title('Convergence of P1','Interpreter','Latex');
+loglog(1./Dim, LS_err_dv_P2,'o',1./Dim, LS_err_du_P2,'r');
+title('Convergence of P2','Interpreter','Latex');
 ylabel('Absolute Error','Interpreter','Latex');
 xlabel('$\Delta$x','Interpreter','Latex');
-y=(1.507e-7)*(1./Dim).^(3.2);
-%loglog(1./Dim,y,'g');
 
-%P2
+%P1
 %Creating the plots
 figure;
-loglog(1./Dim, LS_err_dv,'or');
+loglog(1./Dim, LS_err_dv_P1,'or');
+y=0.0003*(1./Dim).^(1.1643);
 hold on;
-title('Convergence of P2 with Ls fitting','Interpreter','Latex');
+loglog(1./Dim,y,'--r');
+title('Convergence of P1 with LS fitting','Interpreter','Latex');
 ylabel('Absolute Error','Interpreter','Latex');
 xlabel('$\Delta$x','Interpreter','Latex');
-y=745*(1./Dim).^(4.052);
-%loglog(1./Dim,y,'g');
+
 
 %% Mass
 figure;
 loglog(1./Dim, LS_err_dh, 'or');
-hold on
-y=(0.02869)*(1./Dim).^(4.082);
-%loglog(1./Dim,y,'g');
+yh=0.1832*(1./Dim).^(1.977);
+hold on;
+loglog(1./Dim,yh,'--r');
 title('Convergence of h','Interpreter','Latex');
 ylabel('Absolute Error','Interpreter','Latex');
 xlabel('$\Delta$x','Interpreter','Latex');
+
