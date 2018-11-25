@@ -8,7 +8,7 @@ syms x y t;
 % Initialize symbolic fields with arbitrary periodic functions
 us = sin(2 * pi * x / L) * cos(2 * pi * y / L) * t;
 vs = sin(2 * pi * x / L) * sin(2 * pi * y / L) * t;
-hs = D^3 * cos(2 * pi * x / L) * cos(2 * pi * y / L) * t;
+hs = cos(2 * pi * x / L) * cos(2 * pi * y / L) * t + D;
 
 f_us = matlabFunction(us, 'Vars', [x y t]);
 f_vs = matlabFunction(vs, 'Vars', [x y t]);
@@ -50,11 +50,10 @@ for j = 1:N + 4
 
         u_t(i, j) = f_us(mesh.sx(i), mesh.cy(j), t0);
         v_t(i, j) = f_vs(mesh.cx(i), mesh.sy(j), t0);
-        eta_t(i, j) = f_hs(mesh.cx(i), mesh.cy(j), t0) - D + h_B(i,j);
+        eta_t(i, j) = f_hs(mesh.cx(i), mesh.cy(j), t0) - D + h(i,j);
 
     end
 end
-
 
 u_t = HaloUpdate(u_t);
 v_t = HaloUpdate(v_t);

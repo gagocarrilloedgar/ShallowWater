@@ -5,12 +5,13 @@ LS_err_dv_P2 = zeros(length(Dim),1);
 LS_err_dv_P1 = zeros(length(Dim),1);
 
 LS_err_dh = zeros(length(Dim),1);
+LS_err_AB = zeros(length(Dim),1);
 
 Selection =  3 ;
 %%UnComment to get all the results
 
-for k=1:3
-    Selection = k;
+for k=1:1
+    Selection = 4;
     
     switch(Selection)
         
@@ -44,8 +45,9 @@ for k=1:3
             
         case (Options(4))
             for i=1:length(Dim)
-                %[AdamBashforthInt(i)] = AdamBashforthConvergence(Dim(i), DeltaT);
+                [LS_err_AB(i)] = AdamBashforthConvergence(Dim(i), DeltaT);
             end
+            loglog(1./Dim,LS_err_AB,'or');
             
         otherwise
             fprintf('Not an available option');

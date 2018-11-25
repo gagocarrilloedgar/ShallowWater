@@ -1,11 +1,11 @@
 
-M = 20; % Number of points in x direction
-N = 20; % Number of points in y direction
+%M = 20; % Number of points in x direction
+%N = 20; % Number of points in y direction
 M_halo = M + 4; %
 N_halo= N + 4; 
 t0 = 0; % Starting time
 DeltaT = 1e-4; % [s]
-T = 1000; % [s] the time integration last;
+T = 10; % [s] the time integration last;
 T_steps=3; % time integration steps
 D = 0.1; % [m] - Depth of the fluid layer
 L = 1; % [m] - Length of the sides
